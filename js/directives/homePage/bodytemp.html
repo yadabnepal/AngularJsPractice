@@ -1,0 +1,19 @@
+<div class="row" ng-controller="MainController">
+
+	<div ng-repeat="product in products" class="col-md-6">
+		<div class="thumbnail"><img ng-src="{{ product.cover }}">
+			<p class="title">{{ product.name }}</p>
+			</img>
+			<p class="price"> {{ product.price | currency }} </p>
+			<p class="date"> {{ product.pubdate | date }} </p>
+
+			<div class="rating">
+				<p class="likes" ng-click="plusOne($index)">+ {{ product.likes }} </p>
+				<p class="dislikes" ng-click="minusOne($index)">- {{ product.dislikes }} </p>
+			</div>
+		</div>
+	</div>
+<p>Ericsson is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+</div>
+
+

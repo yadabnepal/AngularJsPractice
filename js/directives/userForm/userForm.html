@@ -1,0 +1,18 @@
+<div ng-controller="userFormController as ctrl">
+	<form ng-submit="ctrl.submit()" name="userForm">
+		
+		<input type="text" ng-model="ctrl.user.username" class="name" placeholder="Name" name="uname" required ng-minlength="3"/>
+		<span ng-show="userForm.$dirty && userForm.uname.$error.required">This is a required field</span>
+        <span ng-show="userForm.$dirty && userForm.uname.$error.minlength">Minimum length required is 4</span>
+        <span ng-show="userForm.$dirty && userForm.uname.$invalid">This field is invalid </span><br/><br/>
+		
+		<input type="text" ng-model="ctrl.user.address" placeholder="Address" class="address" name="address" required />
+		<span ng-show="userForm.$dirty && userForm.address.$error.required">This is a required field</span>
+		
+		<input type="email" ng-model="ctrl.user.email" class="email" placeholder="Enter your email" name="email" required/>
+		<span ng-show="userForm.$dirty && userForm.email.$error.required">This is a required field</span>
+        <span ng-show="userForm.$dirty && userForm.email.$invalid">This field is invalid </span><br/><br/>
+		
+		<input type="submit" value="Submit" ng-disabled="userForm.$invalid">
+	</form>
+</div>
