@@ -1,18 +1,69 @@
 <div ng-controller="userFormController as ctrl">
+    <div class="panel panel-default">
+    <div class="panel-heading"><span class="lead">User Registration Form </span></div>
+    <div class="formcontainer">
 	<form ng-submit="ctrl.submit()" name="userForm">
 		
-		<input type="text" ng-model="ctrl.user.username" class="name" placeholder="Name" name="uname" required ng-minlength="3"/>
-		<span ng-show="userForm.$dirty && userForm.uname.$error.required">This is a required field</span>
-        <span ng-show="userForm.$dirty && userForm.uname.$error.minlength">Minimum length required is 4</span>
-        <span ng-show="userForm.$dirty && userForm.uname.$invalid">This field is invalid </span><br/><br/>
+        <br>
+         <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="uname">Name</label>
+                              <div class="col-md-4">
+		<input type="text" ng-model="ctrl.user.name" class="name form-control input-sm" placeholder="Name" name="uname" required ng-minlength="3"/>
+        </div></div></div>
 		
-		<input type="text" ng-model="ctrl.user.address" placeholder="Address" class="address" name="address" required />
-		<span ng-show="userForm.$dirty && userForm.address.$error.required">This is a required field</span>
-		
-		<input type="email" ng-model="ctrl.user.email" class="email" placeholder="Enter your email" name="email" required/>
-		<span ng-show="userForm.$dirty && userForm.email.$error.required">This is a required field</span>
-        <span ng-show="userForm.$dirty && userForm.email.$invalid">This field is invalid </span><br/><br/>
-		
-		<input type="submit" value="Submit" ng-disabled="userForm.$invalid">
+        <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="address">Address</label>
+                              <div class="col-md-4">
+		<input type="text" ng-model="ctrl.user.address" placeholder="Address" class="address form-control input-sm" name="address" required />
+                                 </div></div></div>
+        <div class="row">
+        <div class="form-group col-md-12">
+        <label class="col-md-2 control-lable" for="email">Email</label>
+        <div class="col-md-4">
+		  <input type="email" ng-model="ctrl.user.email" class="email form-control input-sm" placeholder="Enter your email" name="email" required/>
+            </div></div></div>
+            
+        <div class="row">
+        <div class="form-actions floatRight">
+        <div class="col-md-4 text-center">
+            <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="userForm.$invalid" value="{{!ctrl.user.id ? 'Add' : 'Update'}}" >
+            <button type="button" class="btn btn-warning " ng-click="ctrl.reset()">Reset</button>         
+        </div></div></div>
+            
+            
 	</form>
+        </div>
+    <br>
+    </div>
+    
+    <div class="panel panel-default">
+                <!-- Default panel contents -->
+              <div class="panel-heading"><span class="lead">List of Users </span></div>
+              <div class="tablecontainer">
+                  <table class="table table-hover">
+                      <thead>
+                          <tr>
+                              <th>ID.</th>
+                              <th>Name</th>
+                              <th>Address</th>
+                              <th>Email</th>
+                              <th width="100">
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="u in ctrl.users">
+                              <td><span ng-bind="u.id"></span></td>
+                              <td><span ng-bind="u.name"></span></td>
+                              <td><span ng-bind="u.address"></span></td>
+                              <td><span ng-bind="u.email"></span></td>
+                              <td>
+                              <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <br>
+                                  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
 </div>
