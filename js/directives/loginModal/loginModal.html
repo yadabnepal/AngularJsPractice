@@ -1,0 +1,41 @@
+<!-- Login Modal -->
+        <div id="login-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm" style="width:400px">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#0066ff; -webkit-border-radius: 5px 5px 0px 0px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Anedia - Login</h3>
+                    </div>
+                    <div class="modal-body" ng-controller="loginController as ctr">
+                        <form role="form" name="loginForm" ng-submit="ctr.submit()">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-lg" placeholder="Username" ng-model="ctr.user.username" name="uname" required ng-minlength="6">
+								<div class="has-error" ng-show="loginForm.uname.$dirty">
+								<span ng-show="loginForm.uname.$error.required" class="text-danger">Username Cannot be empty</span>
+								<span ng-show="loginForm.uname.$error.minlength" class="text-danger">Minimum lenght must be 6</span>
+									</div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control input-lg" placeholder="Password" ng-model="ctr.user.password" name="pword" required ng-minlength="6">
+								<div class="has-error" ng-show="loginForm.pword.$dirty">
+								<span ng-show="loginForm.pword.$error.required" class="text-danger">Password cannot be empty</span>
+									<span ng-show="loginForm.pword.$error.minlength" class="text-danger">Invalid password</span></div></div>
+                            <center>
+                                
+                                <button class="btn btn-primary btn-lg" ng-disabled="loginForm.$invalid">Login</button>
+                                <br>
+
+                            </center>
+
+                        </form>
+                        <span>Not a Member? <a href="#" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">Sign Up</a></span>
+                        <span class="pull-right"><a href="#" data-toggle="modal" data-target="#forgot-modal" data-dismiss="modal">Forgot Password?</a></span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
